@@ -11,6 +11,7 @@ import UIKit
 class PlayerViewController: UIViewController {
     
     @IBOutlet weak var playerImageView: UIImageView!
+    var playerPhotoIsReady = false
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet var nationalityField: UIView!
     @IBOutlet weak var ageField: UITextField!
@@ -30,6 +31,8 @@ class PlayerViewController: UIViewController {
         self.pickerView.delegate = self
         self.pickerController.sourceType = .photoLibrary
         
+        self.pickerController.delegate = self
+        
         teams = teamManager.fetchData(from: Team.self)
     }
     
@@ -39,6 +42,7 @@ class PlayerViewController: UIViewController {
     
     @IBAction func teamButtonPressed(_ sender: Any) {
         pickerView.isHidden = false
+        selectTeam = true
         pickerView.reloadAllComponents()
     }
     
@@ -54,7 +58,7 @@ class PlayerViewController: UIViewController {
     
 }
 
-// Support UIPickerView delegate and data source
+// UIPickerView delegate and data source
 extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -77,4 +81,16 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+}
+
+// UIPickerController delegate
+extension PlayerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            playerImageView.image = image
+            playerPhotoIsReady = true
+        }
+        
+        self.pickerController.dismiss(animated: true, completion: nil)
+    }
 }
