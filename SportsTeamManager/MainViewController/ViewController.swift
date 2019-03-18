@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UITableViewController {
     
     private let resuseIdentifier = "PlayerCell"
+    var teamManager: TeamManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,8 @@ class MainViewController: UITableViewController {
     
     @objc func addButtonPressed(_ sender: Any?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let playerVC = storyboard.instantiateViewController(withIdentifier: "PlayerVC")
+        let playerVC = storyboard.instantiateViewController(withIdentifier: "PlayerVC") as! PlayerViewController
+        playerVC.teamManager = teamManager
         
         self.navigationController?.pushViewController(playerVC, animated: true)
     }
