@@ -113,7 +113,6 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print(row)
         if selectTeam {
             return teams[row].name
         } else {
