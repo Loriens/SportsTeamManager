@@ -10,7 +10,13 @@ import UIKit
 
 class PlayerViewController: UIViewController {
     
-    var teamManager: TeamManager?
+    @IBOutlet weak var playerImageView: UIImageView!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet var nationalityField: UIView!
+    @IBOutlet weak var ageField: UITextField!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    var teamManager: TeamManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
