@@ -77,8 +77,6 @@ class PlayerViewController: UIViewController {
             player.fullName = nameField.text
             player.image = playerImageView.image
             player.nationality = nationalityField.text
-            player.number = numberField.text
-            print(player.number)
             player.position = choosenPosition
             player.team = choosenTeam
             
