@@ -23,22 +23,15 @@ class MainViewController: UITableViewController {
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         
-//        let context = teamManager.getContext()
-//
-//        let player = teamManager.createObject(from: Player.self)
-//        player.age = Int16(exactly: 31.0)!
-//        player.nationality = "Slavyanin"
-//        player.fullName = "Lionel Messi"
-//        player.image = UIImage(named: "default player")
-//        player.number = "10"
-//        player.position = "Forward"
-//
-//        let team = teamManager.createObject(from: Team.self)
-//        team.name = "Real Madrid"
-//
-//        player.team = team
-//
-//        teamManager.save(context: context)
+        // Create teams, if there is no one team
+        let context = teamManager.getContext()
+        let teams = teamManager.fetchData(from: Team.self)
+        if teams.count == 0 {
+            teamManager.createObject(from: Team.self).name = "Barcelona"
+            teamManager.createObject(from: Team.self).name = "Real Madrid"
+            teamManager.createObject(from: Team.self).name = "Chelsea"
+        }
+        teamManager.save(context: context)
         
     }
     
@@ -67,6 +60,19 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170.0
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE", handler: {
+            deleteAction, indexPath in
+            
+            self.teamManager.delete(object: self.players[indexPath.item])
+            self.fetchData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        })
+        
+        deleteAction.backgroundColor = .red
+        return [deleteAction]
     }
     
     @objc func addButtonPressed(_ sender: Any?) {
