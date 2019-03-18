@@ -19,14 +19,20 @@ class PlayerViewController: UIViewController {
     var teamManager: TeamManager!
     private var teams = [Team]()
     private var positions = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
+    private var pickerController = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
+        self.pickerController.sourceType = .photoLibrary
         
         teams = teamManager.fetchData(from: Team.self)
+    }
+    
+    @IBAction func uploadImageButtonPressed(_ sender: Any) {
+        self.present(pickerController, animated: true)
     }
     
     @IBAction func teamButtonPressed(_ sender: Any) {
@@ -41,6 +47,7 @@ class PlayerViewController: UIViewController {
     
 }
 
+// Support UIPickerView delegate and data source
 extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

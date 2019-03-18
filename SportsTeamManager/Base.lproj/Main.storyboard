@@ -45,7 +45,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default player" translatesAutoresizingMaskIntoConstraints="NO" id="elW-dU-a55">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default player-2" translatesAutoresizingMaskIntoConstraints="NO" id="elW-dU-a55">
                                 <rect key="frame" x="87.666666666666686" y="129" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="elW-dU-a55" secondAttribute="height" multiplier="1:1" id="CSI-AA-9ng"/>
@@ -55,6 +55,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lK-Bb-Ads">
                                 <rect key="frame" x="140" y="337" width="95" height="30"/>
                                 <state key="normal" title="Upload image"/>
+                                <connections>
+                                    <action selector="uploadImageButtonPressed:" destination="xrH-la-UfM" eventType="touchUpInside" id="8a6-8y-E73"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8YR-bJ-qVX">
                                 <rect key="frame" x="30" y="377" width="315" height="30"/>
@@ -173,6 +176,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="default player" width="381" height="394"/>
+        <image name="default player-2" width="381" height="394"/>
     </resources>
 </document>

@@ -34,7 +34,7 @@ class MainViewController: UITableViewController {
 //        player.position = "Forward"
 //
 //        let team = teamManager.createObject(from: Team.self)
-//        team.name = "Barcelona"
+//        team.name = "Real Madrid"
 //
 //        player.team = team
 //
