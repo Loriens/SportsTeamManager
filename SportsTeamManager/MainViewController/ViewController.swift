@@ -16,6 +16,8 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: resuseIdentifier)
+        let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,6 +36,13 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170.0
+    }
+    
+    @objc func addButtonPressed(_ sender: Any?) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let playerVC = storyboard.instantiateViewController(withIdentifier: "PlayerVC")
+        
+        self.navigationController?.pushViewController(playerVC, animated: true)
     }
 
 }
