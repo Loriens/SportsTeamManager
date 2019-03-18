@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlayerViewController: UIViewController {
     
@@ -23,6 +24,8 @@ class PlayerViewController: UIViewController {
     private var teams = [Team]()
     private var positions = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
     private var pickerController = UIImagePickerController()
+    private var context: NSManagedObjectContext?
+    private var player = Player()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +33,6 @@ class PlayerViewController: UIViewController {
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
         self.pickerController.sourceType = .photoLibrary
-        
         self.pickerController.delegate = self
         
         teams = teamManager.fetchData(from: Team.self)
@@ -79,6 +81,16 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else {
             return positions[row]
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if selectTeam {
+            player.team = teams[row]
+        } else {
+            player.position = positions[row]
+        }
+        
+        pickerView.isHidden = true
     }
     
 }
