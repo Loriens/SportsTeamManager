@@ -165,7 +165,8 @@
                     <connections>
                         <outlet property="ageField" destination="sVH-SP-vXL" id="jAL-hF-eiH"/>
                         <outlet property="nameField" destination="8YR-bJ-qVX" id="A03-sZ-4rP"/>
-                        <outlet property="nationalityField" destination="XPi-cs-3jp" id="9Er-q7-UES"/>
+                        <outlet property="nationalityField" destination="VXN-m0-oeJ" id="ZYu-Bw-pJA"/>
+                        <outlet property="numberField" destination="sDK-O5-zeq" id="3T2-kz-OKh"/>
                         <outlet property="pickerView" destination="ozg-qq-fAg" id="dld-NR-usS"/>
                         <outlet property="playerImageView" destination="elW-dU-a55" id="yzB-HX-K2U"/>
                     </connections>

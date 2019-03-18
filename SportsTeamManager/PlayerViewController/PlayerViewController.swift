@@ -14,9 +14,10 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playerImageView: UIImageView!
     var playerPhotoIsReady = false
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet var nationalityField: UIView!
     @IBOutlet weak var ageField: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var numberField: UITextField!
+    @IBOutlet weak var nationalityField: UITextField!
     
     var teamManager: TeamManager!
     // If selectTeam is false, user press select position
@@ -55,7 +56,22 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if playerPhotoIsReady &&
+            (nameField.text != "") &&
+            (nationalityField.text != "") &&
+            (ageField.text != "") &&
+            (numberField.text != "") {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "There is an empty field", preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+                action in
+            })
+            
+            alert.addAction(okAction)
+            
+            self.navigationController?.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
