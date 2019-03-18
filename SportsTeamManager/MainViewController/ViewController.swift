@@ -17,6 +17,8 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: resuseIdentifier)
+        self.tableView.allowsSelection = false
+        
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addButton
     }
