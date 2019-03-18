@@ -64,7 +64,7 @@ final class TeamManager {
         let request: NSFetchRequest<T>
         var fetchResult = [T]()
         
-        request = entity.fetchRequest()
+        request = entity.fetchRequest() as! NSFetchRequest<T>
         
         do {
             fetchResult = try context.fetch(request)

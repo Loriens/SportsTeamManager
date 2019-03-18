@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navigator = UINavigationController()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateInitialViewController() as! MainViewController
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
         mainVC.teamManager = teamManager
         navigator.viewControllers = [mainVC]
         
