@@ -135,6 +135,15 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ageLabel" destination="UyP-Hm-7VC" id="pcd-aD-sSx"/>
+                <outlet property="fullNameLabel" destination="5wE-Cz-zur" id="RwU-58-KJS"/>
+                <outlet property="nationalityLabel" destination="VnM-St-V6Q" id="Za3-LO-yZS"/>
+                <outlet property="numberLabel" destination="XQr-Ur-bBH" id="HIl-ko-XNt"/>
+                <outlet property="playerImageView" destination="Vbh-S1-HKG" id="OlJ-9p-F4r"/>
+                <outlet property="positionLabel" destination="gi1-fh-Qnd" id="w9d-OR-cgq"/>
+                <outlet property="teamLabel" destination="iCm-Ua-Zhv" id="ky1-wU-Eb4"/>
+            </connections>
             <point key="canvasLocation" x="169.56521739130437" y="210.32608695652175"/>
         </tableViewCell>
     </objects>

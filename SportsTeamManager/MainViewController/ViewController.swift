@@ -11,7 +11,8 @@ import UIKit
 class MainViewController: UITableViewController {
     
     private let resuseIdentifier = "PlayerCell"
-    var teamManager: TeamManager?
+    var teamManager: TeamManager!
+    private var players = [Player]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,31 @@ class MainViewController: UITableViewController {
         
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addButton
+        
+//        let context = teamManager.getContext()
+//
+//        let player = teamManager.createObject(from: Player.self)
+//        player.age = Int16(exactly: 31.0)!
+//        player.nationality = "Slavyanin"
+//        player.fullName = "Lionel Messi"
+//        player.image = UIImage(named: "default player")
+//        player.number = "10"
+//        player.position = "Forward"
+//
+//        let team = teamManager.createObject(from: Team.self)
+//        team.name = "Barcelona"
+//
+//        player.team = team
+//
+//        teamManager.save(context: context)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchData()
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,11 +54,13 @@ class MainViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return players.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: resuseIdentifier) as! TableViewCell
+        
+        cell.configure(with: players[indexPath.item])
         
         return cell
     }
@@ -47,6 +75,10 @@ class MainViewController: UITableViewController {
         playerVC.teamManager = teamManager
         
         self.navigationController?.pushViewController(playerVC, animated: true)
+    }
+    
+    private func fetchData() {
+        players = teamManager.fetchData(from: Player.self)
     }
 
 }

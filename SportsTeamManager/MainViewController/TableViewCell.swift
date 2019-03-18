@@ -9,10 +9,31 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var playerImageView: UIImageView!
+    @IBOutlet weak var teamLabel: UILabel!
+    @IBOutlet weak var nationalityLabel: UILabel!
+    @IBOutlet weak var positionLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    func configure(with player: Player) {
+        numberLabel.text = player.number
+        fullNameLabel.text = player.fullName
+        teamLabel.text = player.team?.name
+        nationalityLabel.text = player.nationality
+        positionLabel.text = player.position
+        ageLabel.text = "\(player.age)"
+        
+        if let image = player.image as? UIImage {
+            playerImageView.image = image
+        }
     }
     
 }
