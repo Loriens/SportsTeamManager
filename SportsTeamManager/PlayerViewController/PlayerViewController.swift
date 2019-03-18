@@ -17,6 +17,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     
     var teamManager: TeamManager!
+    // If selectTeam is false, user press select position
+    private var selectTeam = true
     private var teams = [Team]()
     private var positions = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
     private var pickerController = UIImagePickerController()
@@ -36,9 +38,14 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func teamButtonPressed(_ sender: Any) {
+        pickerView.isHidden = false
+        pickerView.reloadAllComponents()
     }
     
     @IBAction func positionButtonPressed(_ sender: Any) {
+        pickerView.isHidden = false
+        selectTeam = false
+        pickerView.reloadAllComponents()
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
@@ -51,28 +58,22 @@ class PlayerViewController: UIViewController {
 extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch component {
-        case 0:
+        if selectTeam {
             return teams.count
-        case 1:
+        } else {
             return positions.count
-        default:
-            return 0
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        case 0:
+        if selectTeam {
             return teams[row].name
-        case 1:
+        } else {
             return positions[row]
-        default:
-            return "empty"
         }
     }
     

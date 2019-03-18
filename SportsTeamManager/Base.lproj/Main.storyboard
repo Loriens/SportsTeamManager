@@ -123,8 +123,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-qq-fAg">
-                                <rect key="frame" x="0.0" y="608" width="375" height="90"/>
+                            <pickerView hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-qq-fAg">
+                                <rect key="frame" x="0.0" y="632" width="375" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="z8l-Hg-76T"/>
                                 </constraints>
@@ -139,10 +139,10 @@
                             <constraint firstItem="oXT-i2-H2j" firstAttribute="centerY" secondItem="LOl-Sx-Qb7" secondAttribute="centerY" id="APX-xm-d58"/>
                             <constraint firstItem="elW-dU-a55" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="Aw9-zB-Z6a"/>
                             <constraint firstItem="8YR-bJ-qVX" firstAttribute="top" secondItem="8lK-Bb-Ads" secondAttribute="bottom" constant="10" id="BdM-Ob-gXQ"/>
-                            <constraint firstItem="ncH-6A-Tli" firstAttribute="bottom" secondItem="ozg-qq-fAg" secondAttribute="bottom" constant="80" id="Cef-dQ-tmU"/>
                             <constraint firstItem="sDK-O5-zeq" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" constant="75" id="Exo-ut-fex"/>
                             <constraint firstItem="ncH-6A-Tli" firstAttribute="trailing" secondItem="VXN-m0-oeJ" secondAttribute="trailing" constant="30" id="F2Q-Ba-AnH"/>
                             <constraint firstItem="ncH-6A-Tli" firstAttribute="bottom" secondItem="iNO-It-chI" secondAttribute="bottom" constant="10" id="G5W-Uz-dWa"/>
+                            <constraint firstItem="iNO-It-chI" firstAttribute="top" secondItem="ozg-qq-fAg" secondAttribute="bottom" constant="10" id="HwU-Z5-0ye"/>
                             <constraint firstItem="VXN-m0-oeJ" firstAttribute="top" secondItem="8YR-bJ-qVX" secondAttribute="bottom" constant="10" id="Ibq-mi-Mmn"/>
                             <constraint firstItem="iNO-It-chI" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="JbS-Ng-LJQ"/>
                             <constraint firstItem="sDK-O5-zeq" firstAttribute="top" secondItem="ncH-6A-Tli" secondAttribute="top" constant="95" id="M00-Af-SFL"/>
