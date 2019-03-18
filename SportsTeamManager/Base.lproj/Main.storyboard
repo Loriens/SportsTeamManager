@@ -45,58 +45,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="elW-dU-a55">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default player" translatesAutoresizingMaskIntoConstraints="NO" id="elW-dU-a55">
                                 <rect key="frame" x="87.666666666666686" y="129" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="elW-dU-a55" secondAttribute="height" multiplier="1:1" id="CSI-AA-9ng"/>
                                     <constraint firstAttribute="width" constant="200" id="gL7-IA-QRb"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lK-Bb-Ads">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lK-Bb-Ads">
                                 <rect key="frame" x="140" y="337" width="95" height="30"/>
                                 <state key="normal" title="Upload image"/>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8YR-bJ-qVX">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8YR-bJ-qVX">
                                 <rect key="frame" x="30" y="377" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nationality" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-m0-oeJ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nationality" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-m0-oeJ">
                                 <rect key="frame" x="30" y="417" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVH-SP-vXL">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVH-SP-vXL">
                                 <rect key="frame" x="30" y="457" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Team:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-gM-Tos">
-                                <rect key="frame" x="30" y="507" width="47" height="20.333333333333258"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-gM-Tos">
+                                <rect key="frame" x="30" y="506.99999999999994" width="47" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-Sx-Qb7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-Sx-Qb7">
                                 <rect key="frame" x="30" y="552.33333333333337" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBd-SQ-zMR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBd-SQ-zMR">
                                 <rect key="frame" x="87" y="502.33333333333326" width="108" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Press to select"/>
+                                <connections>
+                                    <action selector="teamButtonPressed:" destination="xrH-la-UfM" eventType="touchUpInside" id="U7F-is-ddB"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXT-i2-H2j">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXT-i2-H2j">
                                 <rect key="frame" x="101" y="547.66666666666663" width="108" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Press to select"/>
+                                <connections>
+                                    <action selector="positionButtonPressed:" destination="xrH-la-UfM" eventType="touchUpInside" id="xfS-hH-BjV"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNO-It-chI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNO-It-chI">
                                 <rect key="frame" x="164" y="732" width="47" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Save"/>
@@ -114,20 +120,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-qq-fAg">
-                                <rect key="frame" x="0.0" y="588" width="375" height="79"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-qq-fAg">
+                                <rect key="frame" x="0.0" y="608" width="375" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="z8l-Hg-76T"/>
+                                </constraints>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rBd-SQ-zMR" firstAttribute="leading" secondItem="w8N-gM-Tos" secondAttribute="trailing" constant="10" id="0Oj-uF-3Nf"/>
                             <constraint firstItem="LOl-Sx-Qb7" firstAttribute="top" secondItem="rBd-SQ-zMR" secondAttribute="bottom" constant="20" id="0ix-Sc-dbm"/>
-                            <constraint firstItem="ozg-qq-fAg" firstAttribute="top" secondItem="oXT-i2-H2j" secondAttribute="bottom" constant="10" id="2gF-l1-ypH"/>
                             <constraint firstItem="8lK-Bb-Ads" firstAttribute="top" secondItem="elW-dU-a55" secondAttribute="bottom" constant="8" id="3HT-Hl-xFi"/>
                             <constraint firstItem="elW-dU-a55" firstAttribute="top" secondItem="ncH-6A-Tli" secondAttribute="top" constant="85" id="7hM-pX-c34"/>
                             <constraint firstItem="oXT-i2-H2j" firstAttribute="centerY" secondItem="LOl-Sx-Qb7" secondAttribute="centerY" id="APX-xm-d58"/>
                             <constraint firstItem="elW-dU-a55" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="Aw9-zB-Z6a"/>
                             <constraint firstItem="8YR-bJ-qVX" firstAttribute="top" secondItem="8lK-Bb-Ads" secondAttribute="bottom" constant="10" id="BdM-Ob-gXQ"/>
+                            <constraint firstItem="ncH-6A-Tli" firstAttribute="bottom" secondItem="ozg-qq-fAg" secondAttribute="bottom" constant="80" id="Cef-dQ-tmU"/>
                             <constraint firstItem="sDK-O5-zeq" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" constant="75" id="Exo-ut-fex"/>
                             <constraint firstItem="ncH-6A-Tli" firstAttribute="trailing" secondItem="VXN-m0-oeJ" secondAttribute="trailing" constant="30" id="F2Q-Ba-AnH"/>
                             <constraint firstItem="ncH-6A-Tli" firstAttribute="bottom" secondItem="iNO-It-chI" secondAttribute="bottom" constant="10" id="G5W-Uz-dWa"/>
@@ -147,7 +156,6 @@
                             <constraint firstItem="8lK-Bb-Ads" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="jcG-qH-oV6"/>
                             <constraint firstItem="8YR-bJ-qVX" firstAttribute="leading" secondItem="ncH-6A-Tli" secondAttribute="leading" constant="30" id="mLj-KV-6MH"/>
                             <constraint firstItem="rBd-SQ-zMR" firstAttribute="centerY" secondItem="w8N-gM-Tos" secondAttribute="centerY" id="ow4-jp-o4l"/>
-                            <constraint firstItem="iNO-It-chI" firstAttribute="top" secondItem="ozg-qq-fAg" secondAttribute="bottom" constant="80" id="tg7-nT-shg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ncH-6A-Tli"/>
                     </view>
@@ -164,4 +172,7 @@
             <point key="canvasLocation" x="53.600000000000001" y="27.339901477832512"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="default player" width="381" height="394"/>
+    </resources>
 </document>
