@@ -26,7 +26,8 @@ class PlayerViewController: UIViewController {
     private var positions = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
     private var pickerController = UIImagePickerController()
     private var context: NSManagedObjectContext?
-    private var player = Player()
+    private var choosenTeam = Team()
+    private var choosenPosition = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,10 @@ class PlayerViewController: UIViewController {
         self.pickerController.delegate = self
         
         teams = teamManager.fetchData(from: Team.self)
+        choosenPosition = positions[0]
+        if teams.count > 0 {
+            choosenTeam = teams[0]
+        }
     }
     
     @IBAction func uploadImageButtonPressed(_ sender: Any) {
@@ -61,10 +66,27 @@ class PlayerViewController: UIViewController {
             (nationalityField.text != "") &&
             (ageField.text != "") &&
             (numberField.text != "") {
+            let context = teamManager.getContext()
+            let player = teamManager.createObject(from: Player.self)
+            
+            if let age = Int16(ageField.text!) {
+                player.age = age
+            } else {
+                player.age = 0
+            }
+            player.fullName = nameField.text
+            player.image = playerImageView.image
+            player.nationality = nationalityField.text
+            player.number = "\(numberField.text!)"
+            player.position = choosenPosition
+            player.team = choosenTeam
+            
+            teamManager.save(context: context)
+            
             self.navigationController?.popViewController(animated: true)
         } else {
-            let alert = UIAlertController(title: "Error", message: "There is an empty field", preferredStyle: .actionSheet)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+            let alert = UIAlertController(title: "Error", message: "There is an empty field", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: {
                 action in
             })
             
@@ -92,6 +114,7 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print(row)
         if selectTeam {
             return teams[row].name
         } else {
@@ -101,9 +124,9 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if selectTeam {
-            player.team = teams[row]
+            choosenTeam = teams[row]
         } else {
-            player.position = positions[row]
+            choosenPosition = positions[row]
         }
         
         pickerView.isHidden = true
