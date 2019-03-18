@@ -70,7 +70,7 @@ class PlayerViewController: UIViewController {
             
             alert.addAction(okAction)
             
-            self.navigationController?.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
