@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigator = UINavigationController()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateInitialViewController()!
-        let playerVC = storyboard.instantiateViewController(withIdentifier: "PlayerVC")
-        navigator.viewControllers = [mainVC, playerVC]
+        navigator.viewControllers = [mainVC]
         
         self.window?.rootViewController = navigator
         self.window?.makeKeyAndVisible()
