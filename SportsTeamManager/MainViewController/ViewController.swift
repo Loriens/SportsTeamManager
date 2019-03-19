@@ -23,6 +23,17 @@ class MainViewController: UITableViewController {
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         
+//        let context = teamManager.getContext()
+//        let players = teamManager.fetchData(from: Player.self)
+//        for player in players {
+//            teamManager.delete(object: player)
+//        }
+//        let teams = teamManager.fetchData(from: Team.self)
+//        for team in teams {
+//            teamManager.delete(object: team)
+//        }
+//        teamManager.save(context: context)
+
         fillPlayersAndTeams()
     }
     
@@ -82,12 +93,17 @@ class MainViewController: UITableViewController {
     private func fillPlayersAndTeams() {
         let context = teamManager.getContext()
         
+        var teams = teamManager.fetchData(from: Team.self)
+        if teams.count == 0 {
+            teamManager.createObject(from: Team.self).name = "Barcelona"
+            teamManager.createObject(from: Team.self).name = "Real Madrid"
+            teamManager.createObject(from: Team.self).name = "Chelsea"
+            teamManager.createObject(from: Team.self).name = "Spartak"
+        }
+        teams = teamManager.fetchData(from: Team.self)
+        
         let players = teamManager.fetchData(from: Player.self)
         if players.count == 0 {
-            let context = teamManager.getContext()
-            
-            let teams = teamManager.fetchData(from: Team.self)
-            print(teams)
             
             let player1 = teamManager.createObject(from: Player.self)
             player1.age = 23
@@ -97,6 +113,7 @@ class MainViewController: UITableViewController {
             player1.number = "10"
             player1.position = "Forward"
             player1.team = teams[0]
+            player1.inPlay = true
             
             let player2 = teamManager.createObject(from: Player.self)
             player2.age = 10
@@ -106,6 +123,7 @@ class MainViewController: UITableViewController {
             player2.number = "43"
             player2.position = "Goalkeeper"
             player2.team = teams[1]
+            player2.inPlay = false
             
             let player3 = teamManager.createObject(from: Player.self)
             player3.age = 40
@@ -115,6 +133,7 @@ class MainViewController: UITableViewController {
             player3.number = "9"
             player3.position = "Midfielder"
             player3.team = teams[2]
+            player3.inPlay = true
             
             let player4 = teamManager.createObject(from: Player.self)
             player4.age = 30
@@ -124,6 +143,7 @@ class MainViewController: UITableViewController {
             player4.number = "9"
             player4.position = "Midfielder"
             player4.team = teams[0]
+            player4.inPlay = false
             
             let player5 = teamManager.createObject(from: Player.self)
             player5.age = 21
@@ -133,25 +153,19 @@ class MainViewController: UITableViewController {
             player5.number = "6"
             player5.position = "Defender"
             player5.team = teams[3]
+            player5.inPlay = true
             
             let player6 = teamManager.createObject(from: Player.self)
             player6.age = 21
             player6.fullName = "Ronaldo Sixers"
             player6.image = UIImage(named: "player6")
             player6.nationality = "Americanec"
-            player6.number = "6"
+            player6.number = "60"
             player6.position = "Defender"
             player6.team = teams[2]
+            player6.inPlay = false
             
             teamManager.save(context: context)
-        }
-        
-        let teams = teamManager.fetchData(from: Team.self)
-        if teams.count == 0 {
-            teamManager.createObject(from: Team.self).name = "Barcelona"
-            teamManager.createObject(from: Team.self).name = "Real Madrid"
-            teamManager.createObject(from: Team.self).name = "Chelsea"
-            teamManager.createObject(from: Team.self).name = "Spartak"
         }
         
         teamManager.save(context: context)
