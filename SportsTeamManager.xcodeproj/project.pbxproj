@@ -12,6 +12,8 @@
 		04071757223FA011007FE15A /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04071755223FA011007FE15A /* TableViewCell.xib */; };
 		0407175A223FB1A1007FE15A /* TeamManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04071758223FB1A1007FE15A /* TeamManager.xcdatamodeld */; };
 		0407175C223FBBB7007FE15A /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407175B223FBBB7007FE15A /* TeamManager.swift */; };
+		0435CF8A2242D3BF009D2C01 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435CF882242D3BF009D2C01 /* SearchViewController.swift */; };
+		0435CF8B2242D3BF009D2C01 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0435CF892242D3BF009D2C01 /* SearchViewController.xib */; };
 		04A47A48223E981300787325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47A47223E981300787325 /* AppDelegate.swift */; };
 		04A47A4A223E981300787325 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47A49223E981300787325 /* ViewController.swift */; };
 		04A47A4D223E981300787325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A47A4B223E981300787325 /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 		04071755223FA011007FE15A /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		04071759223FB1A1007FE15A /* TeamManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamManager.xcdatamodel; sourceTree = "<group>"; };
 		0407175B223FBBB7007FE15A /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
+		0435CF882242D3BF009D2C01 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0435CF892242D3BF009D2C01 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		04A47A44223E981300787325 /* SportsTeamManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsTeamManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A47A47223E981300787325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A47A49223E981300787325 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,15 @@
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
+		0435CF832242CE66009D2C01 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0435CF882242D3BF009D2C01 /* SearchViewController.swift */,
+				0435CF892242D3BF009D2C01 /* SearchViewController.xib */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
 		04A47A3B223E981300787325 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 				04A47A47223E981300787325 /* AppDelegate.swift */,
 				04071753223F9DA4007FE15A /* MainViewController */,
 				04071752223F9D52007FE15A /* PlayerViewController */,
+				0435CF832242CE66009D2C01 /* SearchViewController */,
 				0407175B223FBBB7007FE15A /* TeamManager.swift */,
 				04A47A4B223E981300787325 /* Main.storyboard */,
 				04A47A4E223E981300787325 /* Assets.xcassets */,
@@ -156,6 +170,7 @@
 				04A47A52223E981300787325 /* LaunchScreen.storyboard in Resources */,
 				04071757223FA011007FE15A /* TableViewCell.xib in Resources */,
 				04A47A4F223E981300787325 /* Assets.xcassets in Resources */,
+				0435CF8B2242D3BF009D2C01 /* SearchViewController.xib in Resources */,
 				04A47A4D223E981300787325 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A47A4A223E981300787325 /* ViewController.swift in Sources */,
+				0435CF8A2242D3BF009D2C01 /* SearchViewController.swift in Sources */,
 				04071756223FA011007FE15A /* TableViewCell.swift in Sources */,
 				0407175C223FBBB7007FE15A /* TeamManager.swift in Sources */,
 				04A47A48223E981300787325 /* AppDelegate.swift in Sources */,

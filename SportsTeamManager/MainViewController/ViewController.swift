@@ -38,6 +38,11 @@ class MainViewController: UITableViewController {
 //        teamManager.save(context: context)
 
         fillPlayersAndTeams()
+        
+        let vc = SearchViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
