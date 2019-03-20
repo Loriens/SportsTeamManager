@@ -115,9 +115,13 @@ class MainViewController: UITableViewController {
         players = teamManager.fetchData(from: Player.self)
         
         switch selectedSegment {
+        case 0:
+            self.selectedSegment = selectedSegment
         case 1:
+            self.selectedSegment = selectedSegment
             players = players.filter({$0.inPlay})
         case 2:
+            self.selectedSegment = selectedSegment
             players = players.filter({!$0.inPlay})
         default:
             break

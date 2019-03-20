@@ -179,6 +179,8 @@
                         <outlet property="numberField" destination="sDK-O5-zeq" id="3T2-kz-OKh"/>
                         <outlet property="pickerView" destination="ozg-qq-fAg" id="dld-NR-usS"/>
                         <outlet property="playerImageView" destination="elW-dU-a55" id="yzB-HX-K2U"/>
+                        <outlet property="positionSelectButton" destination="oXT-i2-H2j" id="Pz5-0w-Zkr"/>
+                        <outlet property="teamSelectButton" destination="rBd-SQ-zMR" id="pNt-jV-qOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNF-bA-7q7" userLabel="First Responder" sceneMemberID="firstResponder"/>

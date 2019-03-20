@@ -19,6 +19,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var numberField: UITextField!
     @IBOutlet weak var nationalityField: UITextField!
     @IBOutlet weak var inPlaySegmentedControl: UISegmentedControl!
+    @IBOutlet weak var teamSelectButton: UIButton!
+    @IBOutlet weak var positionSelectButton: UIButton!
     
     var teamManager: TeamManager!
     // If selectTeam is false, user press select position
@@ -129,8 +131,10 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if selectTeam {
             choosenTeam = teams[row]
+            teamSelectButton.titleLabel?.text = choosenTeam.name
         } else {
             choosenPosition = positions[row]
+            positionSelectButton.titleLabel?.text = choosenPosition
         }
         
         pickerView.isHidden = true
