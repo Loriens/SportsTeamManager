@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Photos
 
 class PlayerViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class PlayerViewController: UIViewController {
     private var positions = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
     private var pickerController = UIImagePickerController()
     private var context: NSManagedObjectContext?
-    private var choosenTeam = Team()
+    private var choosenTeam: Team?
     private var choosenPosition = ""
 
     override func viewDidLoad() {
@@ -81,7 +82,8 @@ class PlayerViewController: UIViewController {
             player.image = playerImageView.image
             player.nationality = nationalityField.text
             player.position = choosenPosition
-            player.team = choosenTeam
+            player.team = choosenTeam!
+            player.number = numberField.text
             if inPlaySegmentedControl.selectedSegmentIndex == 0 {
                 player.inPlay = true
             } else {
@@ -131,7 +133,7 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if selectTeam {
             choosenTeam = teams[row]
-            teamSelectButton.titleLabel?.text = choosenTeam.name
+            teamSelectButton.titleLabel?.text = choosenTeam?.name
         } else {
             choosenPosition = positions[row]
             positionSelectButton.titleLabel?.text = choosenPosition
@@ -144,12 +146,14 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 // UIPickerController delegate
 extension PlayerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             playerImageView.image = image
             playerPhotoIsReady = true
         }
         
-        self.pickerController.dismiss(animated: true, completion: nil)
+        defer {
+            self.pickerController.dismiss(animated: true, completion: nil)
+        }
     }
 }

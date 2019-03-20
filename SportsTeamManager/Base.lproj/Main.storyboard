@@ -129,8 +129,8 @@
                                     <constraint firstAttribute="height" constant="90" id="z8l-Hg-76T"/>
                                 </constraints>
                             </pickerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Nm-Vc-Ty9">
-                                <rect key="frame" x="20" y="63" width="335" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Nm-Vc-Ty9">
+                                <rect key="frame" x="20" y="64" width="335" height="29"/>
                                 <segments>
                                     <segment title="In Play"/>
                                     <segment title="Bench"/>
@@ -167,6 +167,7 @@
                             <constraint firstItem="8lK-Bb-Ads" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="jcG-qH-oV6"/>
                             <constraint firstItem="8YR-bJ-qVX" firstAttribute="leading" secondItem="ncH-6A-Tli" secondAttribute="leading" constant="30" id="mLj-KV-6MH"/>
                             <constraint firstItem="rBd-SQ-zMR" firstAttribute="centerY" secondItem="w8N-gM-Tos" secondAttribute="centerY" id="ow4-jp-o4l"/>
+                            <constraint firstItem="3Nm-Vc-Ty9" firstAttribute="top" secondItem="ncH-6A-Tli" secondAttribute="top" constant="20" id="qt6-ea-aAt"/>
                             <constraint firstItem="3Nm-Vc-Ty9" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="wcP-6P-Fak"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ncH-6A-Tli"/>

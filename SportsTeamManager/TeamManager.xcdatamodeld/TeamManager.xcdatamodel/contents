@@ -4,7 +4,7 @@
         <attribute name="age" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fullName" attributeType="String" syncable="YES"/>
         <attribute name="image" attributeType="Transformable" syncable="YES"/>
-        <attribute name="inPlay" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="inPlay" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nationality" attributeType="String" syncable="YES"/>
         <attribute name="number" attributeType="String" syncable="YES"/>
         <attribute name="position" attributeType="String" syncable="YES"/>
