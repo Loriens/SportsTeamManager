@@ -94,7 +94,7 @@ class MainViewController: UITableViewController {
         segment.insertSegment(withTitle: "All", at: 0, animated: true)
         segment.insertSegment(withTitle: "In Play", at: 1, animated: true)
         segment.insertSegment(withTitle: "Bench", at: 2, animated: true)
-        segment.selectedSegmentIndex = 0
+        segment.selectedSegmentIndex = selectedSegment
         segment.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
         view.addSubview(segment)
         

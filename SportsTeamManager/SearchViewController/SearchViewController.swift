@@ -31,6 +31,8 @@ class SearchViewController: UIViewController {
     private var selectedPosition = "Goalkeeper"
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         viewForPicker.isHidden = true
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -38,6 +40,38 @@ class SearchViewController: UIViewController {
         if let team = teams.first {
             selectedTeam = team
         }
+        
+        let closeTap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.closeTapGesture(_:)))
+        bgView.addGestureRecognizer(closeTap)
+    }
+    
+    private func makeCompoundPredicate(name: String, age: String, team: String, position: String) -> NSCompoundPredicate {
+        
+        var predicates = [NSPredicate]()
+        
+        if !name.isEmpty {
+            let namePredicate = NSPredicate(format: "name CONTAINS[cd] '\(name)'")
+            predicates.append(namePredicate)
+        }
+        
+        if !position.isEmpty {
+            let positionPredicate = NSPredicate(format: "position CONTAINS[cd] '\(position)'")
+            predicates.append(positionPredicate)
+        }
+        
+        if !team.isEmpty {
+            let teamPredicate = NSPredicate(format: "team CONTAINS[cd] '\(team)'")
+            predicates.append(teamPredicate)
+        }
+        
+        if !age.isEmpty {
+            let selectedSegmentControl = ageCondition(index: ageSegmentedControl.selectedSegmentIndex)
+            let agePredicate = NSPredicate(format: "age \(selectedSegmentControl) '\(age)'")
+            predicates.append(agePredicate)
+        }
+        
+        
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
     
     @IBAction func positionSelectPressed(_ sender: Any) {
@@ -53,11 +87,46 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func startSearchPressed(_ sender: Any) {
+        guard let name = fullNameField.text,
+            let age = ageField.text,
+            var team = teamButton.titleLabel?.text,
+            var position = posititonButton.titleLabel?.text else {
+                return
+        }
+        
+        if team == "Select" {
+            team = ""
+        }
+        if position == "Select" {
+            position = ""
+        }
+        
+        let compoundPredicate = makeCompoundPredicate(name: name, age: age, team: team, position: position)
+        delegate?.viewController(self, didPassedData: compoundPredicate)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func resetPressed(_ sender: Any) {
         delegate?.viewController(self, didPassedData: NSCompoundPredicate(andPredicateWithSubpredicates: []))
         
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func ageCondition(index: Int) -> String {
+        var condition: String!
+        
+        switch index {
+        case 0: condition = ">="
+        case 1: condition = "="
+        case 2: condition = "<="
+        default: break
+        }
+        
+        return condition
+    }
+    
+    @objc func closeTapGesture (_ recognizer: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
     
