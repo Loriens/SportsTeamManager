@@ -14,6 +14,7 @@ class MainViewController: UITableViewController {
     var teamManager: TeamManager!
     private var players = [Player]()
     private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
+    private var selectedSegment = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +124,7 @@ class MainViewController: UITableViewController {
         }
     }
     
-    /// Create players, if there is no one
+    /// Create players and teams, if there is no one
     private func fillPlayersAndTeams() {
         let context = teamManager.getContext()
         

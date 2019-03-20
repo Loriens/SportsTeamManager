@@ -129,6 +129,13 @@
                                     <constraint firstAttribute="height" constant="90" id="z8l-Hg-76T"/>
                                 </constraints>
                             </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Nm-Vc-Ty9">
+                                <rect key="frame" x="20" y="63" width="335" height="29"/>
+                                <segments>
+                                    <segment title="In Play"/>
+                                    <segment title="Bench"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -150,6 +157,7 @@
                             <constraint firstItem="ozg-qq-fAg" firstAttribute="width" secondItem="XPi-cs-3jp" secondAttribute="width" id="PjN-Cg-okC"/>
                             <constraint firstItem="ncH-6A-Tli" firstAttribute="trailing" secondItem="sVH-SP-vXL" secondAttribute="trailing" constant="30" id="PkR-78-QLU"/>
                             <constraint firstItem="sVH-SP-vXL" firstAttribute="top" secondItem="VXN-m0-oeJ" secondAttribute="bottom" constant="10" id="R2N-I8-7oq"/>
+                            <constraint firstItem="3Nm-Vc-Ty9" firstAttribute="width" secondItem="XPi-cs-3jp" secondAttribute="width" constant="-40" id="YZu-Yn-yOV"/>
                             <constraint firstItem="VXN-m0-oeJ" firstAttribute="leading" secondItem="ncH-6A-Tli" secondAttribute="leading" constant="30" id="bS4-41-B6F"/>
                             <constraint firstItem="LOl-Sx-Qb7" firstAttribute="leading" secondItem="ncH-6A-Tli" secondAttribute="leading" constant="30" id="bgb-dv-WFi"/>
                             <constraint firstItem="oXT-i2-H2j" firstAttribute="leading" secondItem="LOl-Sx-Qb7" secondAttribute="trailing" constant="10" id="cZ4-8m-4kI"/>
@@ -159,11 +167,13 @@
                             <constraint firstItem="8lK-Bb-Ads" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="jcG-qH-oV6"/>
                             <constraint firstItem="8YR-bJ-qVX" firstAttribute="leading" secondItem="ncH-6A-Tli" secondAttribute="leading" constant="30" id="mLj-KV-6MH"/>
                             <constraint firstItem="rBd-SQ-zMR" firstAttribute="centerY" secondItem="w8N-gM-Tos" secondAttribute="centerY" id="ow4-jp-o4l"/>
+                            <constraint firstItem="3Nm-Vc-Ty9" firstAttribute="centerX" secondItem="ncH-6A-Tli" secondAttribute="centerX" id="wcP-6P-Fak"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ncH-6A-Tli"/>
                     </view>
                     <connections>
                         <outlet property="ageField" destination="sVH-SP-vXL" id="jAL-hF-eiH"/>
+                        <outlet property="inPlaySegmentedControl" destination="3Nm-Vc-Ty9" id="G64-MA-mKk"/>
                         <outlet property="nameField" destination="8YR-bJ-qVX" id="A03-sZ-4rP"/>
                         <outlet property="nationalityField" destination="VXN-m0-oeJ" id="ZYu-Bw-pJA"/>
                         <outlet property="numberField" destination="sDK-O5-zeq" id="3T2-kz-OKh"/>

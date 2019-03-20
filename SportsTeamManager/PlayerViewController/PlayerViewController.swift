@@ -18,6 +18,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var numberField: UITextField!
     @IBOutlet weak var nationalityField: UITextField!
+    @IBOutlet weak var inPlaySegmentedControl: UISegmentedControl!
     
     var teamManager: TeamManager!
     // If selectTeam is false, user press select position
@@ -79,6 +80,11 @@ class PlayerViewController: UIViewController {
             player.nationality = nationalityField.text
             player.position = choosenPosition
             player.team = choosenTeam
+            if inPlaySegmentedControl.selectedSegmentIndex == 0 {
+                player.inPlay = true
+            } else {
+                player.inPlay = false
+            }
             
             teamManager.save(context: context)
             
