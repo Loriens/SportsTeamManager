@@ -18,6 +18,7 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: resuseIdentifier)
+        self.tableView.sectionHeaderHeight = 70
         self.tableView.allowsSelection = false
         
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
@@ -75,6 +76,28 @@ class MainViewController: UITableViewController {
         
         deleteAction.backgroundColor = .red
         return [deleteAction]
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView (frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width
+            , height: 18))
+        let segment = UISegmentedControl(frame: CGRect(x: 20, y: 20, width: tableView.frame.size.width - 40, height: 30))
+        segment.insertSegment(withTitle: "All", at: 0, animated: true)
+        segment.insertSegment(withTitle: "In Play", at: 1, animated: true)
+        segment.insertSegment(withTitle: "Bench", at: 2, animated: true)
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
+        view.addSubview(segment)
+        
+        return view
+    }
+    
+    @objc func segmentedControlChanged(_ sender: Any?) {
+        guard let segmentedControl = sender as? UISegmentedControl else {
+            return
+        }
+        
+        print("tap")
     }
     
     @objc func addButtonPressed(_ sender: Any?) {
