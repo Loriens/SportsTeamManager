@@ -60,7 +60,7 @@ class SearchViewController: UIViewController {
         }
         
         if !team.isEmpty {
-            let teamPredicate = NSPredicate(format: "team CONTAINS[cd] '\(team)'")
+            let teamPredicate = NSPredicate(format: "team.name CONTAINS[cd] '\(team)'")
             predicates.append(teamPredicate)
         }
         

@@ -106,7 +106,7 @@ class MainViewController: UITableViewController {
             return
         }
         
-        fetchData(selectedSegment: segmentedControl.selectedSegmentIndex)
+        fetchData(selectedSegment: segmentedControl.selectedSegmentIndex, predicate: selectedPredicate)
         self.tableView.reloadData()
     }
     
@@ -119,7 +119,7 @@ class MainViewController: UITableViewController {
     }
     
     private func fetchData(selectedSegment: Int = 0, predicate: NSCompoundPredicate? = nil) {
-        players = teamManager.fetchData(from: Player.self)
+        players = teamManager.fetchData(from: Player.self, predicate: predicate)
         
         switch selectedSegment {
         case 0:
@@ -221,7 +221,9 @@ class MainViewController: UITableViewController {
 
 extension MainViewController: SearchDelegate {
     func viewController(_ viewController: SearchViewController, didPassedData predicate: NSCompoundPredicate) {
-        
+        selectedPredicate = predicate
+        fetchData(selectedSegment: selectedSegment, predicate: predicate)
+        self.tableView.reloadData()
     }
 }
 

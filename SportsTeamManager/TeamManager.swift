@@ -58,13 +58,16 @@ final class TeamManager {
         save(context: context)
     }
     
-    func fetchData<T: NSManagedObject> (from entity: T.Type) -> [T] {
+    func fetchData<T: NSManagedObject> (from entity: T.Type, predicate: NSCompoundPredicate? = nil) -> [T] {
         let context = getContext()
         
         let request: NSFetchRequest<T>
         var fetchResult = [T]()
         
+//        let sortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         request = entity.fetchRequest() as! NSFetchRequest<T>
+        request.predicate = predicate
+//        request.sortDescriptors = [sortDescriptor]
         
         do {
             fetchResult = try context.fetch(request)
