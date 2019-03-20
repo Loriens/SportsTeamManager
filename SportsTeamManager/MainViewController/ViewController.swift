@@ -13,6 +13,7 @@ class MainViewController: UITableViewController {
     private let resuseIdentifier = "PlayerCell"
     var teamManager: TeamManager!
     private var players = [Player]()
+    private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,8 @@ class MainViewController: UITableViewController {
             return
         }
         
-        print("tap")
+        fetchData(selectedSegment: segmentedControl.selectedSegmentIndex)
+        self.tableView.reloadData()
     }
     
     @objc func addButtonPressed(_ sender: Any?) {
@@ -108,8 +110,17 @@ class MainViewController: UITableViewController {
         self.navigationController?.pushViewController(playerVC, animated: true)
     }
     
-    private func fetchData() {
+    private func fetchData(selectedSegment: Int = 0, predicate: NSCompoundPredicate? = nil) {
         players = teamManager.fetchData(from: Player.self)
+        
+        switch selectedSegment {
+        case 1:
+            players = players.filter({$0.inPlay})
+        case 2:
+            players = players.filter({!$0.inPlay})
+        default:
+            break
+        }
     }
     
     /// Create players, if there is no one
