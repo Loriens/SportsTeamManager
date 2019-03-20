@@ -24,7 +24,9 @@ class MainViewController: UITableViewController {
         self.tableView.allowsSelection = false
         
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.leftBarButtonItem = searchButton
         
 //        let context = teamManager.getContext()
 //        let players = teamManager.fetchData(from: Player.self)
@@ -38,13 +40,6 @@ class MainViewController: UITableViewController {
 //        teamManager.save(context: context)
 
         fillPlayersAndTeams()
-        
-        let SearchVC = SearchViewController()
-        SearchVC.modalTransitionStyle = .crossDissolve
-        SearchVC.modalPresentationStyle = .overCurrentContext
-        SearchVC.delegate = self
-        SearchVC.teams = teamManager.fetchData(from: Team.self)
-        self.present(SearchVC, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +111,15 @@ class MainViewController: UITableViewController {
         playerVC.teamManager = teamManager
         
         self.navigationController?.pushViewController(playerVC, animated: true)
+    }
+    
+    @objc func searchButtonPressed(_ sender: Any?) {
+        let SearchVC = SearchViewController()
+        SearchVC.modalTransitionStyle = .crossDissolve
+        SearchVC.modalPresentationStyle = .overCurrentContext
+        SearchVC.delegate = self
+        SearchVC.teams = teamManager.fetchData(from: Team.self)
+        self.present(SearchVC, animated: true, completion: nil)
     }
     
     private func fetchData(selectedSegment: Int = 0, predicate: NSCompoundPredicate? = nil) {

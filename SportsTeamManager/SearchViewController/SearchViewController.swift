@@ -50,7 +50,7 @@ class SearchViewController: UIViewController {
         var predicates = [NSPredicate]()
         
         if !name.isEmpty {
-            let namePredicate = NSPredicate(format: "name CONTAINS[cd] '\(name)'")
+            let namePredicate = NSPredicate(format: "fullName CONTAINS[cd] '\(name)'")
             predicates.append(namePredicate)
         }
         
