@@ -39,10 +39,12 @@ class MainViewController: UITableViewController {
 
         fillPlayersAndTeams()
         
-        let vc = SearchViewController()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+        let SearchVC = SearchViewController()
+        SearchVC.modalTransitionStyle = .crossDissolve
+        SearchVC.modalPresentationStyle = .overCurrentContext
+        SearchVC.delegate = self
+        SearchVC.teams = teamManager.fetchData(from: Team.self)
+        self.present(SearchVC, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,5 +217,11 @@ class MainViewController: UITableViewController {
         teamManager.save(context: context)
     }
 
+}
+
+extension MainViewController: SearchDelegate {
+    func viewController(_ viewController: SearchViewController, didPassedData predicate: NSCompoundPredicate) {
+        
+    }
 }
 
