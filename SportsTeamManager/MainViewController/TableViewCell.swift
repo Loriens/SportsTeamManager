@@ -17,6 +17,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var nationalityLabel: UILabel!
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var inPlayLabel: UILabel!
     
 
     override func awakeFromNib() {
@@ -30,6 +31,12 @@ class TableViewCell: UITableViewCell {
         nationalityLabel.text = player.nationality
         positionLabel.text = player.position
         ageLabel.text = "\(player.age)"
+        
+        if player.inPlay {
+            inPlayLabel.text = "In Play"
+        } else {
+            inPlayLabel.text = "Bench"
+        }
         
         if let image = player.image as? UIImage {
             playerImageView.image = image
