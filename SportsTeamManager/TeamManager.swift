@@ -90,7 +90,14 @@ final class TeamManager {
             let entityName = String(describing: entity)
             request = NSFetchRequest(entityName: entityName)
         }
-        let sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
+        var sortDescriptor: NSSortDescriptor
+        
+        if entity == Player.self {
+            sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
+        } else {
+            sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        }
+        
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
