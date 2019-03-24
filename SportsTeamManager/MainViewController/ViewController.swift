@@ -23,6 +23,18 @@ class MainViewController: UITableViewController {
         self.tableView.sectionHeaderHeight = 70
         self.tableView.allowsSelection = false
         
+        // Create header table view
+        let headerView = UIView (frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width
+            , height: 70))
+        let segment = UISegmentedControl(frame: CGRect(x: 20, y: 20, width: tableView.frame.size.width - 40, height: 30))
+        segment.insertSegment(withTitle: "All", at: 0, animated: true)
+        segment.insertSegment(withTitle: "In Play", at: 1, animated: true)
+        segment.insertSegment(withTitle: "Bench", at: 2, animated: true)
+        segment.selectedSegmentIndex = selectedSegment
+        segment.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
+        headerView.addSubview(segment)
+        self.tableView.tableHeaderView = headerView
+        
         let addButton = UIBarButtonItem(title: "Add (+)", style: .done, target: self, action: #selector(addButtonPressed(_:)))
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addButton
@@ -80,20 +92,6 @@ class MainViewController: UITableViewController {
         
         deleteAction.backgroundColor = .red
         return [deleteAction]
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView (frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width
-            , height: 18))
-        let segment = UISegmentedControl(frame: CGRect(x: 20, y: 20, width: tableView.frame.size.width - 40, height: 30))
-        segment.insertSegment(withTitle: "All", at: 0, animated: true)
-        segment.insertSegment(withTitle: "In Play", at: 1, animated: true)
-        segment.insertSegment(withTitle: "Bench", at: 2, animated: true)
-        segment.selectedSegmentIndex = selectedSegment
-        segment.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
-        view.addSubview(segment)
-        
-        return view
     }
     
     @objc func segmentedControlChanged(_ sender: Any?) {
