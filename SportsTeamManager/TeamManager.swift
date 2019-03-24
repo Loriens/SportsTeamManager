@@ -64,10 +64,13 @@ final class TeamManager {
         let request: NSFetchRequest<T>
         var fetchResult = [T]()
         
-//        let sortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         request = entity.fetchRequest() as! NSFetchRequest<T>
         request.predicate = predicate
-//        request.sortDescriptors = [sortDescriptor]
+        
+        if entity == Player.self {
+            let sortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+            request.sortDescriptors = [sortDescriptor]
+        }
         
         do {
             fetchResult = try context.fetch(request)
@@ -82,8 +85,7 @@ final class TeamManager {
         let context = getContext()
         let request = entity.fetchRequest() as! NSFetchRequest<T>
         
-        let sortDescriptor = NSSortDescriptor(key: "player.position", ascending: true)
-        //
+        let sortDescriptor = NSSortDescriptor(key: "player.fullName", ascending: true)
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
