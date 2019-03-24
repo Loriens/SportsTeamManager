@@ -81,21 +81,4 @@ final class TeamManager {
         return fetchResult
     }
     
-    func fetchDataWithController<T: NSManagedObject>(for entity: T.Type, sectionNameKeyPath: String? = nil, predicate: NSCompoundPredicate? = nil) -> NSFetchedResultsController<T> {
-        let context = getContext()
-        let request = entity.fetchRequest() as! NSFetchRequest<T>
-        
-        let sortDescriptor = NSSortDescriptor(key: "player.fullName", ascending: true)
-        request.predicate = predicate
-        request.sortDescriptors = [sortDescriptor]
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
-        do {
-            try controller.performFetch()
-        } catch {
-            debugPrint("Could not fetch: \(error.localizedDescription)")
-        }
-        
-        return controller
-    }
-    
 }
