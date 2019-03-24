@@ -153,10 +153,23 @@ class MainViewController: UITableViewController {
     }
     
     private func fetchData(selectedSegment: Int = 0, predicate: NSCompoundPredicate? = nil) {
-        fetchedResultController = teamManager.fetchDataWithController(for: Player.self, sectionNameKeyPath: "position", predicate: predicate)
+        var newPredicate = predicate
+        
+        switch selectedSegment {
+        case 1:
+            let tempPredicate = NSPredicate(format: "inPlay == true")
+            newPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [newPredicate ?? NSCompoundPredicate(), tempPredicate])
+        case 2:
+            let tempPredicate = NSPredicate(format: "inPlay == false")
+            newPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [newPredicate ?? NSCompoundPredicate(), tempPredicate])
+        default:
+            break
+        }
+            
+        
+        fetchedResultController = teamManager.fetchDataWithController(for: Player.self, sectionNameKeyPath: "position", predicate: newPredicate)
         fetchedResultController.delegate = self
         fetchedObjectsCheck()
-        
     }
     
     private func fetchedObjectsCheck() {
