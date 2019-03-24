@@ -13,7 +13,6 @@ class MainViewController: UITableViewController {
     
     private let resuseIdentifier = "PlayerCell"
     var teamManager: TeamManager!
-    private var players = [Player]()
     private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
     private var selectedSegment = 0
     var fetchedResultController: NSFetchedResultsController<Player>!
@@ -103,9 +102,8 @@ class MainViewController: UITableViewController {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE", handler: {
             deleteAction, indexPath in
             
-            self.teamManager.delete(object: self.players[indexPath.item])
-            self.fetchData()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let player = self.fetchedResultController.object(at: indexPath)
+            self.teamManager.delete(object: player)
         })
         
         let editAction = UITableViewRowAction(style: .default, title: "EDIT") {
@@ -113,7 +111,7 @@ class MainViewController: UITableViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let playerVC = storyboard.instantiateViewController(withIdentifier: "PlayerVC") as! PlayerViewController
-            playerVC.player = self.players[indexPath.item]
+            playerVC.player = self.fetchedResultController.object(at: indexPath)
             playerVC.teamManager = self.teamManager
             
             self.navigationController?.pushViewController(playerVC, animated: true)

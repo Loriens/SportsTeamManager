@@ -163,6 +163,9 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         numberField.text = player.number
         choosenTeam = player.team
         choosenPosition = player.position!
+        if !player.inPlay {
+            inPlaySegmentedControl.selectedSegmentIndex = 1
+        }
         
         teamSelectButton.setTitle(choosenTeam?.name, for: .normal)
         positionSelectButton.setTitle(choosenPosition, for: .normal)
