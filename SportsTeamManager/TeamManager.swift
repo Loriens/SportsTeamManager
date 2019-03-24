@@ -82,7 +82,7 @@ final class TeamManager {
         let context = getContext()
         let request = entity.fetchRequest() as! NSFetchRequest<T>
         
-        let sortDescriptor = NSSortDescriptor(key: "category.name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "player.position", ascending: true)
         //
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
