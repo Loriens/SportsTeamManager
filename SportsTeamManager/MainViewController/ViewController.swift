@@ -121,9 +121,20 @@ class MainViewController: UITableViewController {
             self.navigationController?.pushViewController(playerVC, animated: true)
         }
         
+        let player = fetchedResultController.object(at: indexPath)
+        let inPlayAction = UITableViewRowAction(style: .default, title: player.inPlay ? "TO BENCH" : "TO PLAY") {
+            inPlayAction, indexPath in
+            
+            let context = self.teamManager.getContext()
+            let player = self.fetchedResultController.object(at: indexPath)
+            player.inPlay = !player.inPlay
+            self.teamManager.save(context: context)
+        }
+        
         deleteAction.backgroundColor = .red
         editAction.backgroundColor = .gray
-        return [deleteAction, editAction]
+        inPlayAction.backgroundColor = .black
+        return [deleteAction, editAction, inPlayAction]
     }
     
     @objc func segmentedControlChanged(_ sender: Any?) {
