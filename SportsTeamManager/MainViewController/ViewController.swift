@@ -90,8 +90,20 @@ class MainViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         })
         
+        let editAction = UITableViewRowAction(style: .default, title: "EDIT") {
+            editAction, indexPath in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let playerVC = storyboard.instantiateViewController(withIdentifier: "PlayerVC") as! PlayerViewController
+            playerVC.player = self.players[indexPath.item]
+            playerVC.teamManager = self.teamManager
+            
+            self.navigationController?.pushViewController(playerVC, animated: true)
+        }
+        
         deleteAction.backgroundColor = .red
-        return [deleteAction]
+        editAction.backgroundColor = .gray
+        return [deleteAction, editAction]
     }
     
     @objc func segmentedControlChanged(_ sender: Any?) {

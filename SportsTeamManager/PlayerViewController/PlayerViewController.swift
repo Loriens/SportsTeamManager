@@ -24,6 +24,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var positionSelectButton: UIButton!
     
     var teamManager: TeamManager!
+    var player: Player?
     // If selectTeam is false, user press select position
     private var selectTeam = true
     private var teams = [Team]()
@@ -46,6 +47,8 @@ class PlayerViewController: UIViewController {
         if teams.count > 0 {
             choosenTeam = teams[0]
         }
+        
+        checkPlayer()
     }
     
     @IBAction func uploadImageButtonPressed(_ sender: Any) {
@@ -140,6 +143,29 @@ extension PlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
         pickerView.isHidden = true
+    }
+    
+    
+    /// If a user edits a player, fill in the data
+    private func checkPlayer() {
+        guard let player = player else {
+            return
+        }
+        
+        if let image = player.image as? UIImage {
+            playerImageView.image = image
+            playerPhotoIsReady = true
+        }
+        
+        nameField.text = player.fullName
+        nationalityField.text = player.nationality
+        ageField.text = "\(player.age)"
+        numberField.text = player.number
+        choosenTeam = player.team
+        choosenPosition = player.position!
+        
+        teamSelectButton.setTitle(choosenTeam?.name, for: .normal)
+        positionSelectButton.setTitle(choosenPosition, for: .normal)
     }
     
 }
