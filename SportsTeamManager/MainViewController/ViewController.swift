@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UITableViewController {
     
@@ -15,6 +16,7 @@ class MainViewController: UITableViewController {
     private var players = [Player]()
     private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
     private var selectedSegment = 0
+    var fetchedResultController: NSFetchedResultsController<Player>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,31 +56,47 @@ class MainViewController: UITableViewController {
         fillPlayersAndTeams()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func numberOfSections(in tableView: UITableView) -> Int {
         fetchData()
-        self.tableView.reloadData()
+        
+        guard let sections = fetchedResultController.sections else {
+            return 0
+        }
+        
+        return sections.count
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchedResultController.sections else {
+            return nil
+        }
+        
+        return sections[section].name
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        guard let sections = fetchedResultController.sections else {
+            return 0
+        }
+        
+        return sections[section].numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: resuseIdentifier) as! TableViewCell
         
-        cell.configure(with: players[indexPath.item])
+        let cellPlayer = fetchedResultController.object(at: indexPath)
+        cell.configure(with: cellPlayer)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170.0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -133,19 +151,21 @@ class MainViewController: UITableViewController {
     }
     
     private func fetchData(selectedSegment: Int = 0, predicate: NSCompoundPredicate? = nil) {
-        players = teamManager.fetchData(from: Player.self, predicate: predicate)
+        fetchedResultController = teamManager.fetchDataWithController(for: Player.self, sectionNameKeyPath: "position", predicate: predicate)
+        fetchedResultController.delegate = self
+        fetchedObjectsCheck()
         
-        switch selectedSegment {
-        case 0:
-            self.selectedSegment = selectedSegment
-        case 1:
-            self.selectedSegment = selectedSegment
-            players = players.filter({$0.inPlay})
-        case 2:
-            self.selectedSegment = selectedSegment
-            players = players.filter({!$0.inPlay})
-        default:
-            break
+    }
+    
+    private func fetchedObjectsCheck() {
+        guard let objects = fetchedResultController.fetchedObjects else {
+            return
+        }
+        
+        if objects.count > 0 {
+            self.tableView.isHidden = false
+        } else {
+            self.tableView.isHidden = true
         }
     }
     
@@ -231,6 +251,62 @@ class MainViewController: UITableViewController {
         teamManager.save(context: context)
     }
 
+}
+
+extension MainViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+        case .insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+        case .delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+        default:
+            return
+        }
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                self.tableView.insertRows(at: [indexPath], with: .fade)
+                fetchedObjectsCheck()
+            }
+            
+        case .delete:
+            if let indexPath = indexPath {
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                fetchedObjectsCheck()
+            }
+            
+        case .update:
+            if let indexPath = indexPath {
+                let cell = self.tableView.cellForRow(at: indexPath) as! TableViewCell
+                let cellPlayer = fetchedResultController.object(at: indexPath as IndexPath)
+                cell.configure(with: cellPlayer)
+            }
+            
+        case .move:
+            if let indexPath = indexPath {
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let indexPath = newIndexPath {
+                self.tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        }
+        
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
+    }
 }
 
 extension MainViewController: SearchDelegate {
