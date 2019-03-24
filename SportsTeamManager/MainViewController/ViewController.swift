@@ -169,19 +169,6 @@ class MainViewController: UITableViewController {
         
         fetchedResultController = teamManager.fetchDataWithController(for: Player.self, sectionNameKeyPath: "position", predicate: newPredicate)
         fetchedResultController.delegate = self
-        fetchedObjectsCheck()
-    }
-    
-    private func fetchedObjectsCheck() {
-        guard let objects = fetchedResultController.fetchedObjects else {
-            return
-        }
-        
-        if objects.count > 0 {
-            self.tableView.isHidden = false
-        } else {
-            self.tableView.isHidden = true
-        }
     }
     
     /// Create players and teams, if there is no one
@@ -292,13 +279,11 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
         case .insert:
             if let indexPath = newIndexPath {
                 self.tableView.insertRows(at: [indexPath], with: .fade)
-                fetchedObjectsCheck()
             }
             
         case .delete:
             if let indexPath = indexPath {
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
-                fetchedObjectsCheck()
             }
             
         case .update:
