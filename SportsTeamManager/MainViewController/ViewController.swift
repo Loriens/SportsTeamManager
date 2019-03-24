@@ -15,6 +15,7 @@ class MainViewController: UITableViewController {
     var teamManager: TeamManager!
     private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
     private var selectedSegment = 0
+    private var firstCall = true
     var fetchedResultController: NSFetchedResultsController<Player>!
 
     override func viewDidLoad() {
@@ -56,7 +57,10 @@ class MainViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        fetchData()
+        if firstCall {
+            fetchData()
+            firstCall = false
+        }
         
         guard let sections = fetchedResultController.sections else {
             return 0
