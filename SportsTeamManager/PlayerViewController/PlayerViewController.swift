@@ -74,23 +74,29 @@ class PlayerViewController: UIViewController {
             (ageField.text != "") &&
             (numberField.text != "") {
             let context = teamManager.getContext()
-            let player = teamManager.createObject(from: Player.self)
+            var tempPlayer: Player
+            
+            if let player = player {
+                tempPlayer = player
+            } else {
+                tempPlayer = teamManager.createObject(from: Player.self)
+            }
             
             if let age = Int16(ageField.text!) {
-                player.age = age
+                tempPlayer.age = age
             } else {
-                player.age = 0
+                tempPlayer.age = 0
             }
-            player.fullName = nameField.text
-            player.image = playerImageView.image
-            player.nationality = nationalityField.text
-            player.position = choosenPosition
-            player.team = choosenTeam!
-            player.number = numberField.text
+            tempPlayer.fullName = nameField.text
+            tempPlayer.image = playerImageView.image
+            tempPlayer.nationality = nationalityField.text
+            tempPlayer.position = choosenPosition
+            tempPlayer.team = choosenTeam!
+            tempPlayer.number = numberField.text
             if inPlaySegmentedControl.selectedSegmentIndex == 0 {
-                player.inPlay = true
+                tempPlayer.inPlay = true
             } else {
-                player.inPlay = false
+                tempPlayer.inPlay = false
             }
             
             teamManager.save(context: context)
